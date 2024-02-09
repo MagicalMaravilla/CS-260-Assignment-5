@@ -1,0 +1,83 @@
+class AutoSortedList {
+public:
+    void insert(int value); // Inserts a value, maintaining sorted order
+    bool search(int value) const; // Returns true if value is found, false otherwise
+    bool remove(int value); // Removes a value, returns true if successful
+    // Additional helper functions as needed
+};
+
+
+
+
+TESTS
+
+// Step 1: Create an empty AutoSortedList
+AutoSortedList list;
+
+// Step 2: Insert an element into the list
+list.insert(5);
+
+// Step 3: Verify the list contains the element in the correct order
+// Expected: list = [5]
+
+// Step 4: Insert another element into the list
+list.insert(3);
+
+// Step 5: Verify the list is sorted
+// Expected: list = [3, 5]
+
+
+
+
+
+// Step 1: Create an AutoSortedList and insert initial elements
+AutoSortedList list;
+list.insert(2);
+list.insert(4);
+list.insert(6);
+
+// Step 2: Insert a new element that goes between existing elements
+list.insert(5);
+
+// Step 3: Verify the new element is inserted in the correct position
+// Expected: list = [2, 4, 5, 6]
+
+// Step 4: Insert a new element that is smaller than any existing elements
+list.insert(1);
+
+// Step 5: Verify the new element is inserted at the beginning
+// Expected: list = [1, 2, 4, 5, 6]
+
+// Step 6: Insert a new element that is larger than any existing elements
+list.insert(7);
+
+// Step 7: Verify the new element is inserted at the end
+// Expected: list = [1, 2, 4, 5, 6, 7]
+
+
+
+
+// Assuming list = [1, 2, 4, 5, 6, 7] from previous insertions
+
+// Step 1: Search for an existing element (4)
+bool found = list.search(4);
+// Expected: found = true
+
+// Step 2: Search for a non-existing element (3)
+found = list.search(3);
+// Expected: found = false
+
+
+
+
+// Assuming list = [1, 2, 4, 5, 6, 7]
+
+// Step 1: Remove an existing element (4)
+bool removed = list.remove(4);
+// Step 2: Verify the element is removed and the list is still sorted
+// Expected: removed = true, list = [1, 2, 5, 6, 7]
+
+// Step 3: Attempt to remove a non-existing element (3)
+removed = list.remove(3);
+// Step 4: Verify the list remains unchanged
+// Expected: removed = false, list = [1, 2, 5, 6, 7]
