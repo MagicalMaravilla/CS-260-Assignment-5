@@ -1,0 +1,51 @@
+// main.cpp
+#include "AutoSortedList.h"
+#include <cassert>
+#include <iostream>
+
+void testInsertionAndOrder() {
+    AutoSortedList list;
+
+    list.insert(5);
+    assert(list.isListEqual({5})); // Verify list contains [5]
+
+    list.insert(3);
+    assert(list.isListEqual({3, 5})); // Verify list is sorted as [3, 5]
+
+    std::cout << "Test passed: Insertion and order verification." << std::endl;
+}
+
+void testBinarySearch() {
+    AutoSortedList list;
+    list.insert(3);
+    list.insert(5);
+    list.insert(7);
+
+    assert(list.binarySearch(5) == true); // Value exists
+    assert(list.binarySearch(4) == false); // Value does not exist
+
+    std::cout << "Test passed: Binary search verification." << std::endl;
+}
+
+void testRemoval() {
+    AutoSortedList list;
+    list.insert(3);
+    list.insert(5);
+    list.insert(7);
+
+    // Test removing an existing value
+    assert(list.remove(5) == true); // Verify removal is successful
+    assert(list.isListEqual({3, 7})); // Verify list is correctly updated
+
+    // Test removing a value that does not exist
+    assert(list.remove(4) == false); // Verify removal fails for non-existent value
+
+    std::cout << "Test passed: Removal verification." << std::endl;
+}
+
+int main() {
+    testInsertionAndOrder();
+    testBinarySearch(); // Run the binary search test
+    testRemoval(); // removal test verifcation
+    return 0;
+}
