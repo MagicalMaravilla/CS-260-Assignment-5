@@ -1,0 +1,46 @@
+// AutoSortedList.cpp
+#include "AutoSortedList.h"
+#include <iostream>
+
+void AutoSortedList::insert(int value) {
+    data.push_back(value);
+    std::sort(data.begin(), data.end());
+}
+
+bool AutoSortedList::isListEqual(const std::vector<int>& expected) const {
+    return data == expected;
+}
+
+void AutoSortedList::printList() const {
+    for (int val : data) {
+        std::cout << val << " ";
+    }
+    std::cout << std::endl;
+}
+
+bool AutoSortedList::binarySearch(int value) const {
+    int low = 0;
+    int high = data.size() - 1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (data[mid] == value) {
+            return true; //Value found
+        } else if (data[mid] < value) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    return false; // Value not found
+}
+
+bool AutoSortedList::remove(int value) {
+    auto it = std::find(data.begin(), data.end(), value);
+    if (it != data.end()) {
+        data.erase(it); // Remove the element
+        return true; // Indicate success
+    }
+    return false; // Value not found
+}
