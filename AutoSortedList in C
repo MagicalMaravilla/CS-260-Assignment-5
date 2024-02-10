@@ -1,0 +1,20 @@
+// AutoSortedList.h
+#ifndef AUTOSORTEDLIST_H
+#define AUTOSORTEDLIST_H
+
+#include <vector>
+#include <algorithm>
+
+class AutoSortedList {
+private:
+    std::vector<int> data;
+
+public:
+    void insert(int value);
+    bool isListEqual(const std::vector<int>& expected) const;
+    void printList() const;
+    bool binarySearch(int value) const;
+    bool remove(int value); // Add this line
+};
+
+#endif // AUTOSORTEDLIST_H
